@@ -71,7 +71,6 @@ body {
   transition: 0.7s;
   outline-color: transparent;
   outline-style: solid;
-
 }
 
 .hotel-color {
@@ -79,7 +78,7 @@ body {
 }
 
 .room-price {
-  color: darkgoldenrod;
+  color: rgb(184, 134, 11);
   font-family: 'Courier New', Courier, monospace;
   font-size: medium;
 }

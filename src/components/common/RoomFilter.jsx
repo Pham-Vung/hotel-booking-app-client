@@ -42,8 +42,8 @@ const RoomFilter = ({ data, setFilteredData }) => {
                 }
             </select>
             <button
-            style={{backgroundColor: "rgb(169, 77, 123)"}}
-                className='btn'
+            // style={{backgroundColor: "rgb(169, 77, 123)"}}
+                className='btn btn-danger'
                 type='button'
                 onClick={clearFilter}
             >

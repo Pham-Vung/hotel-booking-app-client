@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+    const [showAccount, setShowAccount] = useState(false);
+
+    const handleAccountClick = () => {
+        setShowAccount(!showAccount);
+    }
+
     return (
         <nav className='navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top'>
             <div className='container-fluid'>
@@ -35,18 +41,22 @@ const NavBar = () => {
                     <ul className='d-flex navbar-nav'>
                         <li className='nav-item'>
                             <NavLink className="nav-link" to={"/find-booking"}>
-                                Tìm phòng
+                                Tìm đặt phòng
                             </NavLink>
                         </li>
                         <li className='nav-item dropdown'>
                             <a
                                 href="#"
-                                className='nav-link dropdown-toggle'
+                                className={`nav-link dropdown-toggle ${showAccount ? "show" : ""}`}
                                 role='button'
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
-                            ></a>
-                            <ul className='dropdown-menu' aria-labelledby="navbarDropdown">
+                                onClick={handleAccountClick}
+                            >
+                                {""}
+                                Tài khoản
+                            </a>
+                            <ul className={`dropdown-menu ${showAccount ? "show" : ""}`} aria-labelledby="navbarDropdown">
                                 <li>
                                     <Link to={"/login"} className='dropdown-item'>Đăng nhập</Link>
                                 </li>
