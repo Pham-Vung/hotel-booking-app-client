@@ -50,8 +50,7 @@ const EditRoom = () => {
                 setErrorMessage("Lỗi không được cập nhật");
             }
         } catch (error) {
-            console.error(error)
-            setErrorMessage(error.message)
+            setErrorMessage(error.message);
         }
 
         setTimeout(() => {

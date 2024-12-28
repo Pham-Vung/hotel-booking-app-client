@@ -5,8 +5,8 @@ const NavBar = () => {
     return (
         <nav className='navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top'>
             <div className='container-fluid'>
-                <Link to={"/"}>
-                    <span style={{ color: "rgb(169, 77, 123);" }}>Armani Hotel</span>
+                <Link to={"/"} className='navbar-brand'>
+                    <span style={{ color: "rgb(169, 77, 123)" }}>Armani Hotel</span>
                 </Link>
                 <button
                     className='navbar-toggler'
@@ -39,10 +39,22 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                         <li className='nav-item dropdown'>
-                            <a href=""></a>
-                            <ul>
+                            <a
+                                href="#"
+                                className='nav-link dropdown-toggle'
+                                role='button'
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            ></a>
+                            <ul className='dropdown-menu' aria-labelledby="navbarDropdown">
                                 <li>
-                                    <Link to={"/login"} className='dropdown-item'>Login</Link>
+                                    <Link to={"/login"} className='dropdown-item'>Đăng nhập</Link>
+                                </li>
+                                <li>
+                                    <Link to={"/profile"} className='dropdown-item'>Hồ sơ</Link>
+                                </li>
+                                <li>
+                                    <Link to={"/logout"} className='dropdown-item'>Đăng xuất</Link>
                                 </li>
                             </ul>
                         </li>
