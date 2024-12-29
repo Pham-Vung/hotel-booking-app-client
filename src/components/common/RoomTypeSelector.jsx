@@ -64,7 +64,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
                                     onChange={handleNewRoomTypeInputChange}
                                 />
                                 <button
-                                    className='btn btn-info'
+                                    className='btn btn-hotel'
                                     type='button'
                                     onClick={handleAddNewRoomType}
                                 >

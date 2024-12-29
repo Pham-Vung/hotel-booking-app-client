@@ -12,7 +12,7 @@ const NavBar = () => {
         <nav className='navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top'>
             <div className='container-fluid'>
                 <Link to={"/"} className='navbar-brand'>
-                    <span style={{ color: "rgb(169, 77, 123)" }}>Armani Hotel</span>
+                    <span className='hotel-color'>Armani Hotel</span>
                 </Link>
                 <button
                     className='navbar-toggler'

@@ -77,7 +77,7 @@ const EditRoom = () => {
                     )}
                     <form onSubmit={handleSubmit}>
                         <div className='mb-3'>
-                            <label htmlFor='roomType' className='form-label' style={{ color: "rgb(169, 77, 123)" }}>
+                            <label htmlFor='roomType' className='form-label hotel-color'>
                                 Kiểu phòng
                             </label>
                             <input

@@ -17,17 +17,13 @@ const RoomCard = ({ room }) => {
                         />
                     </div>
                     <div className='flex-grow-1 ms-3 px-5'>
-                        <Card.Title style={{ color: "rgb(169, 77, 123)" }}>{room.roomType}</Card.Title>
-                        <Card.Title style={{
-                            color: "rgb(184, 134, 11)",
-                            fontFamily: "'Courier New', Courier, monospace",
-                            fontSize: "medium",
-                        }}>{room.roomPrice} / đêm</Card.Title>
+                        <Card.Title className='hotel-color'>{room.roomType}</Card.Title>
+                        <Card.Title className='room-price'>{room.roomPrice} / đêm</Card.Title>
                         <Card.Text>Một số thông tin phòng để ở đây để khách đọc qua</Card.Text>
                     </div>
                     <div className='flex-shrink-0 mt-3'>
-                        <Link to={`bookings/${room.id}`} className='btn btn-secondary btn-sm'>
-                            Xem/Đặt phòng ngay
+                        <Link to={`bookings/${room.id}`} className='btn btn-hotel btn-sm'>
+                            Đặt phòng ngay
                         </Link>
                     </div>
                 </Card.Body>
