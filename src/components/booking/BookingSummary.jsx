@@ -29,7 +29,7 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
     return (
         <div className='card card-body mt-5'>
             <h4>Tổng hợp thông tin đặt phòng</h4>
-            <p>Tên: <strong>{booking.guestName}</strong></p>
+            <p>Tên: <strong>{booking.guestFullName}</strong></p>
             <p>Email: <strong>{booking.guestEmail}</strong></p>
             <p>Ngày nhận phòng: <strong>{moment(booking.checkInDate).format("MMM Do YYYY")}</strong></p>
             <p>Ngày trả phòng: <strong>{moment(booking.checkOutDate).format("MMM Do YYYY")}</strong></p>
