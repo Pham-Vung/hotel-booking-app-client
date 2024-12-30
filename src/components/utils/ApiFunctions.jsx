@@ -70,7 +70,7 @@ export const getRoomById = async (roomId) => {
 /* This is function save a new booking to database */
 export const bookRoom = async (roomId, booking) => {
     try {
-        const response = await api.post(`/bookings/room/${roomId}/booking}`, booking);
+        const response = await api.post(`/bookings/room/${roomId}/booking`, booking);
         return response.data;
     } catch (error) {
         if (error.response && error.response.data) {

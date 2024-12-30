@@ -36,7 +36,7 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
             <p>Tổng ngày đặt: <strong>{numberOfDays}</strong></p>
             <div>
                 <h5>Số lượng khách</h5>
-                <strong>Người lớn: {booking.numOfAdults}</strong>
+                <strong>Người lớn: {booking.numOfAdults}</strong> <br />
                 <strong>Trẻ em: {booking.numOfChildren}</strong>
             </div>
             {payment > 0 ? (
