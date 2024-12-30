@@ -66,3 +66,52 @@ export const getRoomById = async (roomId) => {
         throw new Error(`Lỗi không thể xem phòng ${error.message}`);
     }
 }
+
+/* This is function save a new booking to database */
+export const bookRoom = async (roomId, booking) => {
+    try {
+        const response = await api.post(`/bookings/room/${roomId}/booking}`, booking);
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.data) {
+            throw new Error(error.response.data);
+        } else {
+            throw new Error(`Lỗi đặt phòng: ${error.message}`);
+        }
+
+    }
+}
+
+/* This is function gets all bookings from the database */
+export const getAllBookings = async () => {
+    try {
+        const response = await api.get("/bookings/all-bookings");
+        return response.data;
+    } catch (error) {
+        throw new Error(`Lỗi lấy ra các lịch đặt: ${error.message}`);
+    }
+}
+
+/* This is function get booking by the confirmation code  */
+export const getBookingByComfirmationCode = async (confirmationCode) => {
+    try {
+        const response = await api.get(`/bookings/confirmation/${confirmationCode}`);
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.data) {
+            throw new Error(error.response.data);
+        } else {
+            throw new Error(`Lỗi tìm đặt phòng: ${error.message}`);
+        }
+    }
+}
+
+/* This is function cacel booking */
+export const cancelBooking = async (bookingId) => {
+    try {
+        const response = await api.delete(`/bookings/booking/${bookingId}/delete`);
+        return response.data;
+    } catch (error) {
+        throw new Error(`Lỗi xóa lịch đặt: ${error.message}`);
+    }
+}
