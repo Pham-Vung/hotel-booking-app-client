@@ -31,8 +31,8 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
             <h4>Tổng hợp thông tin đặt phòng</h4>
             <p>Tên: <strong>{booking.guestName}</strong></p>
             <p>Email: <strong>{booking.guestEmail}</strong></p>
-            <p>Ngày nhận phòng: <strong>{moment(booking.checkInDate).format("MM DD YYYY")}</strong></p>
-            <p>Ngày trả phòng: <strong>{moment(booking.checkOutDate).format("MM DD YYYY")}</strong></p>
+            <p>Ngày nhận phòng: <strong>{moment(booking.checkInDate).format("MMM Do YYYY")}</strong></p>
+            <p>Ngày trả phòng: <strong>{moment(booking.checkOutDate).format("MMM Do YYYY")}</strong></p>
             <p>Tổng ngày đặt: <strong>{numberOfDays}</strong></p>
             <div>
                 <h5>Số lượng khách</h5>
@@ -60,7 +60,7 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
                     ) : isBookingConfirmed ? (
                         <div className='d-flex justify-content-center align-items-center'>
                             <div className='spinner-border text-primary' role='status'>
-                                <span className='sr-only'>Đang tải</span>
+                                <span className='sr-only'>Đang tải...</span>
                             </div>
                         </div>
                     ) : null}
