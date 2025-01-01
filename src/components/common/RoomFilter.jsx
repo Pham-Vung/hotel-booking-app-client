@@ -42,7 +42,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
                 }
             </select>
             <button
-                className='btn btn-hotel'
+                className='btn btn-hotel btn-sm'
                 type='button'
                 onClick={clearFilter}
             >

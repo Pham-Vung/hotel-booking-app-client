@@ -52,6 +52,17 @@ const BookingForm = () => {
         return diffInDays * price;
     }
 
+    const isDateValid = () => {
+        if (moment(booking.checkInDate).isBefore(moment.now()) ||
+            moment(booking.checkOutDate).isBefore(moment.now())) {
+            setErrorMessage("Ngày nhận phòng hoặc ngày trả phòng không hợp lệ");
+            return false;
+        }
+        setErrorMessage("");
+        return true;
+
+    }
+
     const isGuestValid = () => {
         const adultCount = parseInt(booking.numberOfAdults);
         const childrenCount = parseInt(booking.numberOfChildren);
@@ -63,16 +74,15 @@ const BookingForm = () => {
         if (!moment(booking.checkOutDate).isSameOrAfter(moment(booking.checkInDate))) {
             setErrorMessage("Ngày trả phòng phải bằng hoặc nằm sau ngày nhận phòng");
             return false;
-        } else {
-            setErrorMessage("");
-            return true;
         }
+        setErrorMessage("");
+        return true;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
-        if (!form.checkValidity() || !isGuestValid() || !isCheckOutDateValid()) {
+        if (!form.checkValidity() || !isGuestValid() || !isCheckOutDateValid() || !isDateValid()) {
             e.stopPropagation();
         } else {
             setIsSubmitted(true);
@@ -176,7 +186,7 @@ const BookingForm = () => {
                                     </div>
                                 </fieldset>
 
-                                <fieldset style={{border: '2px'}}>
+                                <fieldset style={{ border: '2px' }}>
                                     <legend>Số lượng khách</legend>
                                     <div className='row'>
                                         <div className='col-6'>

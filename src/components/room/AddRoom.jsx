@@ -108,7 +108,7 @@ const AddRoom = () => {
                                     type='file'
                                     id='photo'
                                     name='photo'
-                                    className='form-control'
+                                    className='form-control mb-2'
                                     onChange={handleImageChange}
                                 />
                                 {

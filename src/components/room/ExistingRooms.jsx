@@ -115,17 +115,17 @@ const ExistingRooms = () => {
                                 <tbody>
                                     {
                                         currentRooms.map(room => (
-                                            <tr key={room.id} className='text-center'>
+                                            <tr key={room.id} className='text-center align-middle'>
                                                 <td>{room.id}</td>
                                                 <td>{room.roomType}</td>
                                                 <td>{room.roomPrice}</td>
-                                                <td className='gap-2'>
+                                                <td>
                                                     <Link to={`/edit-room/${room.id}`}>
-                                                        <span className='btn btn-info btn-sm'><FaEye /> Xem</span>
-                                                        <span className='btn btn-warning btn-sm ml-5'><FaEdit /> Sửa</span>
+                                                        <span className='btn btn-info btn-sm d-inline-flex align-items-center gap-1'><FaEye /> Xem</span>
+                                                        <span className='btn btn-warning btn-sm ms-2 d-inline-flex align-items-center gap-1'><FaEdit /> Sửa</span>
                                                     </Link>
                                                     <button
-                                                        className='btn btn-danger btn-sm ml-5'
+                                                        className='btn btn-danger btn-sm ms-2 mt-2 mt-md-0 d-inline-flex align-items-center gap-1'
                                                         onClick={() => handleDelte(room.id)}
                                                     >
                                                         <FaTrashAlt />
