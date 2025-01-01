@@ -99,12 +99,12 @@ const BookingForm = () => {
         <>
             <div className='container mb-5'>
                 <div className='row'>
-                    <div className='col-md-4'>
+                    <div className='col-md-6'>
                         <div className='card card-body mt-5'>
                             <h4 className='card-title'>Đặt phòng</h4>
                             <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
                                 <Form.Group>
-                                    <Form.Label htmlFor='guestFullName'>Tên đầy đủ:</Form.Label>
+                                    <Form.Label htmlFor='guestFullName' className='hotel-color'>Tên đầy đủ:</Form.Label>
                                     <FormControl
                                         required
                                         type='text'
@@ -120,7 +120,7 @@ const BookingForm = () => {
                                 </Form.Group>
 
                                 <Form.Group>
-                                    <Form.Label htmlFor='guestEmail'>Email:</Form.Label>
+                                    <Form.Label htmlFor='guestEmail' className='hotel-color'>Email:</Form.Label>
                                     <FormControl
                                         required
                                         type='email'
@@ -140,7 +140,7 @@ const BookingForm = () => {
                                     <legend>Thời gian thuê</legend>
                                     <div className='row'>
                                         <div className='col-6'>
-                                            <Form.Label htmlFor='checkInDate'>Ngày nhận phòng:</Form.Label>
+                                            <Form.Label htmlFor='checkInDate' className='hotel-color'>Ngày nhận phòng:</Form.Label>
                                             <FormControl
                                                 required
                                                 type='date'
@@ -157,7 +157,7 @@ const BookingForm = () => {
                                         </div>
 
                                         <div className='col-6'>
-                                            <Form.Label htmlFor='checkOutDate'>Ngày trả phòng:</Form.Label>
+                                            <Form.Label htmlFor='checkOutDate' className='hotel-color'>Ngày trả phòng:</Form.Label>
                                             <FormControl
                                                 required
                                                 type='date'
@@ -180,7 +180,7 @@ const BookingForm = () => {
                                     <legend>Số lượng khách</legend>
                                     <div className='row'>
                                         <div className='col-6'>
-                                            <Form.Label htmlFor='numberOfAdults'>Người lớn:</Form.Label>
+                                            <Form.Label htmlFor='numberOfAdults' className='hotel-color'>Người lớn:</Form.Label>
                                             <FormControl
                                                 required
                                                 type='number'
@@ -197,7 +197,7 @@ const BookingForm = () => {
                                         </div>
 
                                         <div className='col-6'>
-                                            <Form.Label htmlFor='numberOfChildren'>Trẻ em:</Form.Label>
+                                            <Form.Label htmlFor='numberOfChildren' className='hotel-color'>Trẻ em:</Form.Label>
                                             <FormControl
                                                 required
                                                 type='number'
@@ -222,7 +222,7 @@ const BookingForm = () => {
                         </div>
                     </div>
 
-                    <div className='col-md-4'>
+                    <div className='col-md-6'>
                         {isSubmitted && (
                             <BookingSummary
                                 booking={booking}
