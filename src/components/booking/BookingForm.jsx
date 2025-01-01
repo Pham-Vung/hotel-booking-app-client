@@ -99,7 +99,7 @@ const BookingForm = () => {
         <>
             <div className='container mb-5'>
                 <div className='row'>
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                         <div className='card card-body mt-5'>
                             <h4 className='card-title'>Đặt phòng</h4>
                             <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
@@ -176,7 +176,7 @@ const BookingForm = () => {
                                     </div>
                                 </fieldset>
 
-                                <fieldset>
+                                <fieldset style={{border: '2px'}}>
                                     <legend>Số lượng khách</legend>
                                     <div className='row'>
                                         <div className='col-6'>
@@ -205,7 +205,7 @@ const BookingForm = () => {
                                                 name='numberOfChildren'
                                                 value={booking.numberOfChildren}
                                                 placeholder='0'
-                                                min={1}
+                                                min={0}
                                                 onChange={handleInputChange}
                                             />
                                             <Form.Control.Feedback type="invalid">
@@ -222,7 +222,7 @@ const BookingForm = () => {
                         </div>
                     </div>
 
-                    <div className='col-md-6'>
+                    <div className='col-md-4'>
                         {isSubmitted && (
                             <BookingSummary
                                 booking={booking}
