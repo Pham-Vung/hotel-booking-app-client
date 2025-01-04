@@ -67,6 +67,12 @@ export const getRoomById = async (roomId) => {
     }
 }
 
+/* This is function get available rooms from the database within a give date and room type */
+export const getAvailableRooms = async (checkInDate, checkOutDate, roomType) => {
+    const response = await api.get(`/rooms/available-rooms?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`);
+    return response;
+}
+
 /* This is function save a new booking to database */
 export const bookRoom = async (roomId, booking) => {
     try {
