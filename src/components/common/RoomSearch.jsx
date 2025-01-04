@@ -100,8 +100,8 @@ const RoomSearch = () => {
                     className="w-75"
                   />
                   <Button variant="secondary" type="submit">
-										Tìm kiếm
-									</Button>
+                    Tìm kiếm
+                  </Button>
                 </div>
               </Form.Group>
             </Col>
