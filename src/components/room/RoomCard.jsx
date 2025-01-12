@@ -20,7 +20,7 @@ const RoomCard = ({ room }) => {
                     </div>
                     <div className='flex-grow-1 ms-3 px-5'>
                         <Card.Title className='hotel-color'>{room.roomType}</Card.Title>
-                        <Card.Title className='room-price'>{room.roomPrice}/đêm</Card.Title>
+                        <Card.Title className='room-price'>{new Intl.NumberFormat("en-US").format(room.roomPrice)}/đêm</Card.Title>
                         <Card.Text>Một số thông tin phòng để ở đây để khách đọc qua</Card.Text>
                     </div>
                     <div className='flex-shrink-0 mt-3'>

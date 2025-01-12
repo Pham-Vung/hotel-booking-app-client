@@ -61,7 +61,7 @@ const Checkout = () => {
                                         </tr>
                                         <tr>
                                             <th>Giá phòng một đêm:</th>
-                                            <td>{roomInfo.roomPrice}</td>
+                                            <td>{new Intl.NumberFormat("en-US").format(roomInfo.roomPrice)}</td>
                                         </tr>
                                         <tr>
                                             <th>Dịch vụ phòng:</th>

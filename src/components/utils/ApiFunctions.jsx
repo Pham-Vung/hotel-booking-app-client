@@ -4,6 +4,14 @@ export const api = axios.create({
     baseURL: "http://localhost:8080"
 });
 
+export const getHeader = () => {
+    const token = localStorage.getItem("token");
+    return {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+    }
+}
+
 /* This is function adds a new room to the database */
 export const addRoom = async (photo, roomType, roomPrice) => {
     const formData = new FormData();
@@ -11,7 +19,12 @@ export const addRoom = async (photo, roomType, roomPrice) => {
     formData.append("roomType", roomType);
     formData.append("roomPrice", roomPrice);
 
-    const response = await api.post("/rooms/add/new-room", formData);
+    const response = await api.post("/rooms/add/new-room", formData, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data"
+        }
+    });
 
     return response.status === 201;
 }
@@ -39,7 +52,9 @@ export const getAllRooms = async () => {
 /* This is function deletes a room by the Id */
 export const deleteRoom = async (roomId) => {
     try {
-        const response = await api.delete(`/rooms/delete/room/${roomId}`);
+        const response = await api.delete(`/rooms/delete/room/${roomId}`, {
+            headers: getHeader()
+        });
         return response.data;
     } catch (error) {
         throw new Error(`Lỗi không xóa được phòng ${error.message}`);
@@ -53,7 +68,12 @@ export const updateRoom = async (roomId, roomData) => {
     formData.append("roomPrice", roomData.roomPrice);
     formData.append("photo", roomData.photo);
 
-    const response = await api.put(`/rooms/update/${roomId}`, formData);
+    const response = await api.put(`/rooms/update/${roomId}`, formData, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data"
+        }
+    });
     return response;
 }
 
@@ -91,7 +111,9 @@ export const bookRoom = async (roomId, booking) => {
 /* This is function gets all bookings from the database */
 export const getAllBookings = async () => {
     try {
-        const response = await api.get("/bookings/all-bookings");
+        const response = await api.get("/bookings/all-bookings", {
+            headers: getHeader()
+        });
         return response.data;
     } catch (error) {
         throw new Error(`Lỗi lấy ra các lịch đặt: ${error.message}`);
@@ -119,5 +141,75 @@ export const cancelBooking = async (bookingId) => {
         return response.data;
     } catch (error) {
         throw new Error(`Lỗi xóa lịch đặt: ${error.message}`);
+    }
+}
+
+export const getBookingsByUserId = async (userId) => {
+    try {
+        const response = await api.get(`/bookings/user/${userId}/bookings`, {
+            headers: getHeader()
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Lỗi lấy ra các lịch đặt phòng: " + error.message);
+        throw new Error("Không lấy ra được lịch đặt phòng");
+    }
+}
+
+export const registerUser = async (registration) => {
+    try {
+        const response = await api.post("/auth/register-user", registration);
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.data) {
+            throw new Error(error.response.data);
+        }
+        throw new Error(`Lỗi đăng ký người dùng: ${error.message}`);
+    }
+}
+
+export const loginUser = async (login) => {
+    try {
+        const response = await api.post("/auth/login", login);
+        if (response.status >= 200 && response.status < 300) {
+            return response.data;
+        }
+        return null;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export const getUserProfile = async (userId) => {
+    try {
+        const response = await api.get(`/users/profile/${userId}`, {
+            headers: getHeader(),
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const getUser = async (userId) => {
+    try {
+        const response = await api.get(`/users/${userId}`, {
+            headers: getHeader()
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const deleteUser = async (userId) => {
+    try {
+        const response = await api.delete(`/users/delete/${userId}`, {
+            headers: getHeader()
+        });
+        return response.data;
+    } catch (error) {
+        return error.message;
     }
 }

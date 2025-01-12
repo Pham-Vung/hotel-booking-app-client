@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import Logout from '../auth/Logout';
 
 const NavBar = () => {
     const [showAccount, setShowAccount] = useState(false);
@@ -8,12 +9,16 @@ const NavBar = () => {
         setShowAccount(!showAccount);
     }
 
+    const isLoggedIn = localStorage.getItem("token");
+    const userRole = localStorage.getItem("userRole");
+
     return (
         <nav className='navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top py-2'>
             <div className='container-fluid'>
                 <Link to={"/"} className='navbar-brand'>
                     <span className='hotel-color'>Armani Hotel</span>
                 </Link>
+
                 <button
                     className='navbar-toggler'
                     type='button'
@@ -25,6 +30,7 @@ const NavBar = () => {
                 >
                     <span className='navbar-toggler-icon'></span>
                 </button>
+
                 <div className='collapse navbar-collapse' id='navbarScroll'>
                     <ul className='navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll'>
                         <li className='nav-item'>
@@ -32,18 +38,22 @@ const NavBar = () => {
                                 Xem qua tất cả các phòng
                             </NavLink>
                         </li>
-                        <li className='nav-item'>
-                            <NavLink className="nav-link" aria-current="page" to={"/admin"}>
-                                Quản trị viên
-                            </NavLink>
-                        </li>
+                        {isLoggedIn && userRole === "ROLE_ADMIN" && (
+                            <li className='nav-item'>
+                                <NavLink className="nav-link" aria-current="page" to={"/admin"}>
+                                    Quản trị viên
+                                </NavLink>
+                            </li>
+                        )}
                     </ul>
+
                     <ul className='d-flex navbar-nav'>
                         <li className='nav-item'>
                             <NavLink className="nav-link" to={"/find-booking"}>
                                 Tìm đặt phòng
                             </NavLink>
                         </li>
+
                         <li className='nav-item dropdown'>
                             <a
                                 href="#"
@@ -56,22 +66,20 @@ const NavBar = () => {
                                 {""}
                                 Tài khoản
                             </a>
+
                             <ul className={`dropdown-menu ${showAccount ? "show" : ""}`} aria-labelledby="navbarDropdown">
-                                <li>
-                                    <Link to={"/login"} className='dropdown-item'>Đăng nhập</Link>
-                                </li>
-                                <li>
-                                    <Link to={"/profile"} className='dropdown-item'>Hồ sơ</Link>
-                                </li>
-                                <li>
-                                    <Link to={"/logout"} className='dropdown-item'>Đăng xuất</Link>
-                                </li>
+                                {isLoggedIn ? (
+                                    <Logout />
+                                ) : (
+                                    <li>
+                                        <Link className='dropdown-item' to={"/login"}>Đăng nhập</Link>
+                                    </li>
+                                )}
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </nav>
     )
 }

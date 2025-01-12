@@ -11,20 +11,22 @@ const BookingForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [roomPrice, setRoomPrice] = useState(0);
+
+    const currentUser = localStorage.getItem("userId");
     const [booking, setBooking] = useState({
         guestFullName: "",
-        guestEmail: "",
+        guestEmail: currentUser,
         checkInDate: "",
         checkOutDate: "",
         numberOfAdults: "",
         numberOfChildren: "",
     });
 
-    const [roomInfo, setRoomInfo] = useState({
-        photo: "",
-        roomType: "",
-        roomPrice: ""
-    });
+    // const [roomInfo, setRoomInfo] = useState({
+    //     photo: "",
+    //     roomType: "",
+    //     roomPrice: ""
+    // });
 
     const { roomId } = useParams();
     const navigate = useNavigate();
@@ -137,12 +139,13 @@ const BookingForm = () => {
                                         id='guestEmail'
                                         name='guestEmail'
                                         value={booking.guestEmail}
-                                        placeholder='Nhập địa chỉ email'
-                                        onChange={handleInputChange}
+                                        // placeholder='Nhập địa chỉ email'
+                                        disabled
+                                        // onChange={handleInputChange}
                                     />
-                                    <Form.Control.Feedback type="invalid">
+                                    {/* <Form.Control.Feedback type="invalid">
                                         Vui lòng nhập địa chỉ email
-                                    </Form.Control.Feedback>
+                                    </Form.Control.Feedback> */}
                                 </Form.Group>
 
 

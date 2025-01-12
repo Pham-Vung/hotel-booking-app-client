@@ -43,7 +43,7 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
                 </div>
                 {payment > 0 ? (
                     <>
-                        <p>Tổng số tiền thanh toán: <strong>{payment}VNĐ</strong></p>
+                        <p>Tổng số tiền thanh toán: <strong>{new Intl.NumberFormat('en-US').format(payment)} VNĐ</strong></p>
 
                         {isFormValid && !isBookingConfirmed ? (
                             <Button variant='success' onClick={handleConfirmBooking}>

@@ -53,7 +53,7 @@ const RoomCarousel = () => {
                                             </Link>
                                             <Card.Body>
                                                 <Card.Title className='hotel-color'>{room.roomType}</Card.Title>
-                                                <Card.Title className='room-price'>{room.roomPrice}/đêm</Card.Title>
+                                                <Card.Title className='room-price'>{new Intl.NumberFormat("en-US").format(room.roomPrice)}/đêm</Card.Title>
                                                 <div className='flex-shrink-0 mt-3'>
                                                     <Link to={`/book-room/${room.id}`} className='btn btn-hotel btn-sm'>
                                                         Đặt phòng ngay
